@@ -46,34 +46,34 @@ const asanaBot = async (asanaPat, taskID, target, prState, prUrl, prTitle, prNum
       }
     }
   
-    if (commentStatus) {
-      let comment;
-      if (prState === 'OPEN') {
-        comment = {
-          text: `🔓 PR opened\n--------\n${prTitle}\n------------\nView: ${prUrl}`
-        };
-      }
+    // if (commentStatus) {
+    //   let comment;
+    //   if (prState === 'OPEN') {
+    //     comment = {
+    //       text: `🔓 PR opened\n--------\n${prTitle}\n------------\nView: ${prUrl}`
+    //     };
+    //   }
   
-      await client.tasks.addComment(taskID, comment);
-    }
+    //   await client.tasks.addComment(taskID, comment);
+    // }
   
-    if (prState === 'CLOSED') {
-      await client.tasks.addComment(taskID, {
-        text: `🛑 Closed Pull Request #${prNumber}.\n View: ${prUrl}`,
-      });
-    } else if (prState === 'MERGED') {
-      await client.tasks.addComment(taskID, {
-        text: `🎉 Merged Pull Request #${prNumber}\n${prTitle}\nView: ${prUrl}`,
-      });
-    } else if (prState === 'CHANGES_REQUESTED') {
-      await client.tasks.addComment(taskID, {
-        text: `❌ Changes request for PR #${prNumber}\n-> View: ${prUrl}`,
-      });
-    } else if (prState === 'APPROVED') {
-      await client.tasks.addComment(taskID, {
-        text: `✅ PR Approved\n-------------------\n${prTitle}\n-------------------\nView: ${prUrl}`
-      });
-    }
+    // if (prState === 'CLOSED') {
+    //   await client.tasks.addComment(taskID, {
+    //     text: `🛑 Closed Pull Request #${prNumber}.\n View: ${prUrl}`,
+    //   });
+    // } else if (prState === 'MERGED') {
+    //   await client.tasks.addComment(taskID, {
+    //     text: `🎉 Merged Pull Request #${prNumber}\n${prTitle}\nView: ${prUrl}`,
+    //   });
+    // } else if (prState === 'CHANGES_REQUESTED') {
+    //   await client.tasks.addComment(taskID, {
+    //     text: `❌ Changes request for PR #${prNumber}\n-> View: ${prUrl}`,
+    //   });
+    // } else if (prState === 'APPROVED') {
+    //   await client.tasks.addComment(taskID, {
+    //     text: `✅ PR Approved\n-------------------\n${prTitle}\n-------------------\nView: ${prUrl}`
+    //   });
+    // }
   
     if (!foundFlag) {
       return [`No tasks found for the project and the sections mentioned`];
